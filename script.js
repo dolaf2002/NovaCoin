@@ -98,3 +98,20 @@ document.getElementById("exchangeForm").addEventListener("submit", function(e) {
     ${result.toFixed(4)} ${currency.toUpperCase()}</span>
   `;
 });
+window.addEventListener('DOMContentLoaded', async () => {
+  const video = document.getElementById('video');
+  const cameraMessage = document.getElementById('cameraMessage');
+  const mainContent = document.getElementById('mainContent');
+
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    video.srcObject = stream;
+    video.style.display = 'block';
+    cameraMessage.innerText = "Доступ к камере разрешён ✅ Сайт открыт!";
+    
+    mainContent.style.display = 'block';
+  } catch (err) {
+    cameraMessage.innerText = "Доступ к камере отклонён ❌ Сайт не может работать.";
+    mainContent.style.display = 'none';
+  }
+});
