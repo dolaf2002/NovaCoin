@@ -1,2 +1,0 @@
-# NovaCoin
-Cripto
