@@ -82,37 +82,29 @@ window.addEventListener('DOMContentLoaded', async () => {
   chartCanvas.addEventListener("mouseleave", function() { clearTimeout(pressTimer); });
 
   // ================== КНОПКИ МОДАЛОК ==================
-  document.getElementById("closeModal").addEventListener("click", () => {
-    modal.style.display = "none";
-  });
+  document.getElementById("closeModal").addEventListener("click", () => { modal.style.display = "none"; });
 
   document.getElementById("resetChart").addEventListener("click", () => {
     modal.style.display = "none";
 
-    // 1. Сначала показываем ошибку
+    // Сначала окно с ошибкой
     resultModal.style.display = "flex";
     resultModal.querySelector("h3").innerText = "❌ Произошла ошибка";
     resultModal.querySelector("p").innerText = "Попробуйте снова...";
 
-    // 2. Через 2 секунды показываем итоговое сообщение
+    // Через 2 секунды окно с успешным сбросом графика
     setTimeout(() => {
       resultModal.querySelector("h3").innerText = "✅ Сбрасывание графика успешно выполнено";
       resultModal.querySelector("p").innerHTML = `
         <strong>Непогашенный долг:</strong> 53$ <br>
-        <strong>Оборот на минусовом счёте:</strong> 775$ <br>
-        <strong>Время окончания:</strong> 23:47 <br>
-        <strong>Процент на минусовом счёте:</strong> 376%
+        <strong>Оборот на минусовом счёте:</strong> 376% <br>
+        <strong>Текущий баланс:</strong> -828$
       `;
     }, 2000);
   });
 
-  document.getElementById("depositFunds").addEventListener("click", () => {
-    alert("Функция внесения средств пока в разработке 🚀");
-  });
-
-  document.getElementById("closeResult").addEventListener("click", () => {
-    resultModal.style.display = "none";
-  });
+  document.getElementById("depositFunds").addEventListener("click", () => { alert("Функция внесения средств пока в разработке 🚀"); });
+  document.getElementById("closeResult").addEventListener("click", () => { resultModal.style.display = "none"; });
 
   // ================== ОБМЕН NVC ==================
   document.getElementById("exchangeForm").addEventListener("submit", function(e) {
