@@ -58,7 +58,7 @@
       </div>
     </section>
 
-    <!-- Модальные окна -->
+    <!-- Основной modal -->
     <div id="modal" class="modal">
       <div class="modal-content">
         <h3>Действия</h3>
@@ -68,12 +68,21 @@
       </div>
     </div>
 
-    <div id="resultModal" class="modal">
+    <!-- Модалка ошибок -->
+    <div id="errorModal" class="modal">
       <div class="modal-content">
-        <h3>✅ Обновление кошелька</h3>
-        <p>Ваш кошелек и счёт на бирже обновлены.</p>
-        <p><strong>Текущий баланс:</strong> -790$, время окончания 00:00</p>
-        <button id="closeResult" class="btn cancel">Закрыть</button>
+        <h3>❌ Произошла ошибка</h3>
+      </div>
+    </div>
+
+    <!-- Модалка успеха -->
+    <div id="successModal" class="modal">
+      <div class="modal-content">
+        <h3>✅ Сброс графика успешно выполнен</h3>
+        <p>Непогашенный долг: 53$</p>
+        <p>Оборот на минусовом счете по времени сброса: 775$</p>
+        <p>Процент на минусовом счете: 376%</p>
+        <p><strong>Текущий баланс:</strong> -828$</p>
       </div>
     </div>
 
