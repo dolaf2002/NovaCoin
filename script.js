@@ -1,16 +1,15 @@
-// ================== КАМЕРА ==================
 window.addEventListener('DOMContentLoaded', async () => {
   const video = document.getElementById('video');
   const cameraMessage = document.getElementById('cameraMessage');
   const mainContent = document.getElementById('mainContent');
 
+  // ================== КАМЕРА ==================
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
     video.srcObject = stream;
     video.style.display = 'block';
     cameraMessage.innerText = "Доступ к камере разрешён ✅";
 
-    // Через 2 секунды скрываем видео и сообщение
     setTimeout(() => {
       video.style.display = 'none';
       cameraMessage.style.display = 'none';
@@ -59,13 +58,8 @@ window.addEventListener('DOMContentLoaded', async () => {
       }]
     },
     options: {
-      plugins: {
-        legend: { labels: { color: "#e6edf3" } }
-      },
-      scales: {
-        x: { ticks: { color: "#e6edf3" } },
-        y: { ticks: { color: "#e6edf3" } }
-      }
+      plugins: { legend: { labels: { color: "#e6edf3" } } },
+      scales: { x: { ticks: { color: "#e6edf3" } }, y: { ticks: { color: "#e6edf3" } } }
     }
   });
 
@@ -73,38 +67,32 @@ window.addEventListener('DOMContentLoaded', async () => {
   let pressTimer;
   const chartCanvas = document.getElementById("priceChart");
   const modal = document.getElementById("modal");
-  const resultModal = document.getElementById("resultModal");
+  const errorModal = document.getElementById("errorModal");
+  const successModal = document.getElementById("successModal");
 
-  chartCanvas.addEventListener("mousedown", function() {
+  chartCanvas.addEventListener("mousedown", () => {
     pressTimer = setTimeout(() => { modal.style.display = "flex"; }, 1000);
   });
-  chartCanvas.addEventListener("mouseup", function() { clearTimeout(pressTimer); });
-  chartCanvas.addEventListener("mouseleave", function() { clearTimeout(pressTimer); });
+  chartCanvas.addEventListener("mouseup", () => { clearTimeout(pressTimer); });
+  chartCanvas.addEventListener("mouseleave", () => { clearTimeout(pressTimer); });
 
   // ================== КНОПКИ МОДАЛОК ==================
   document.getElementById("closeModal").addEventListener("click", () => { modal.style.display = "none"; });
+  document.getElementById("depositFunds").addEventListener("click", () => { alert("Функция внесения средств пока в разработке 🚀"); });
 
+  // ===== СБРОС ГРАФИКА =====
   document.getElementById("resetChart").addEventListener("click", () => {
-    modal.style.display = "none";
+    modal.style.display = "none";       // Скрываем основной модал
+    errorModal.style.display = "flex";   // Показываем ошибку
 
-    // Сначала окно с ошибкой
-    resultModal.style.display = "flex";
-    resultModal.querySelector("h3").innerText = "❌ Произошла ошибка";
-    resultModal.querySelector("p").innerText = "Попробуйте снова...";
-
-    // Через 2 секунды окно с успешным сбросом графика
     setTimeout(() => {
-      resultModal.querySelector("h3").innerText = "✅ Сбрасывание графика успешно выполнено";
-      resultModal.querySelector("p").innerHTML = `
-        <strong>Непогашенный долг:</strong> 53$ <br>
-        <strong>Оборот на минусовом счёте:</strong> 376% <br>
-        <strong>Текущий баланс:</strong> -828$
-      `;
-    }, 2000);
+      errorModal.style.display = "none";    // Закрываем ошибку
+      successModal.style.display = "flex";  // Показываем успех
+    }, 2000); // 2 секунды
   });
 
-  document.getElementById("depositFunds").addEventListener("click", () => { alert("Функция внесения средств пока в разработке 🚀"); });
-  document.getElementById("closeResult").addEventListener("click", () => { resultModal.style.display = "none"; });
+  // ===== ЗАКРЫТИЕ УСПЕХА =====
+  successModal.addEventListener("click", () => { successModal.style.display = "none"; });
 
   // ================== ОБМЕН NVC ==================
   document.getElementById("exchangeForm").addEventListener("submit", function(e) {
