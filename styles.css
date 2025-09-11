@@ -121,9 +121,10 @@ input, select {
 button {
   cursor: pointer;
 }
-/* Модальное окно */
+
+/* Модальные окна */
 .modal {
-  display: none; /* Скрыто по умолчанию */
+  display: none;
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
@@ -160,6 +161,7 @@ button {
 .cancel:hover {
   background: #6e7681;
 }
+
 /* Подвал */
 footer {
   background: #0d1117;
@@ -168,4 +170,24 @@ footer {
   font-size: 0.9rem;
   border-top: 1px solid #30363d;
   color: #8b949e;
+}
+
+/* Камера */
+#video {
+  width: 300px;
+  border: 2px solid #58a6ff;
+  border-radius: 12px;
+  margin: 20px auto;
+  display: block;
+}
+
+#cameraMessage {
+  text-align: center;
+  margin: 10px 0 20px;
+  font-size: 18px;
+  color: #58a6ff;
+}
+
+#mainContent {
+  display: none;
 }
