@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  // ================== ЗАГРУЗКА КУРСОВ ==================
+  // ================== КУРСЫ ==================
   async function loadPrices() {
     try {
       const response = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=usd");
@@ -70,29 +70,34 @@ window.addEventListener('DOMContentLoaded', async () => {
   const errorModal = document.getElementById("errorModal");
   const successModal = document.getElementById("successModal");
 
-  chartCanvas.addEventListener("mousedown", () => {
+  chartCanvas.addEventListener("mousedown", function() {
     pressTimer = setTimeout(() => { modal.style.display = "flex"; }, 1000);
   });
-  chartCanvas.addEventListener("mouseup", () => { clearTimeout(pressTimer); });
-  chartCanvas.addEventListener("mouseleave", () => { clearTimeout(pressTimer); });
+  chartCanvas.addEventListener("mouseup", function() { clearTimeout(pressTimer); });
+  chartCanvas.addEventListener("mouseleave", function() { clearTimeout(pressTimer); });
 
-  // ================== КНОПКИ МОДАЛОК ==================
+  // ================== КНОПКИ МОДАЛОВ ==================
   document.getElementById("closeModal").addEventListener("click", () => { modal.style.display = "none"; });
+
   document.getElementById("depositFunds").addEventListener("click", () => { alert("Функция внесения средств пока в разработке 🚀"); });
 
-  // ===== СБРОС ГРАФИКА =====
+  // ================== СБРОС ГРАФИКА ==================
   document.getElementById("resetChart").addEventListener("click", () => {
-    modal.style.display = "none";       // Скрываем основной модал
-    errorModal.style.display = "flex";   // Показываем ошибку
+    modal.style.display = "none";
+
+    // Показать сначала ошибку на 2 секунды
+    errorModal.style.display = "flex";
 
     setTimeout(() => {
-      errorModal.style.display = "none";    // Закрываем ошибку
-      successModal.style.display = "flex";  // Показываем успех
-    }, 2000); // 2 секунды
+      errorModal.style.display = "none";
+      // Показать успешное сообщение
+      successModal.style.display = "flex";
+    }, 2000);
   });
 
-  // ===== ЗАКРЫТИЕ УСПЕХА =====
+  // Закрытие успешного модала
   successModal.addEventListener("click", () => { successModal.style.display = "none"; });
+  errorModal.addEventListener("click", () => { errorModal.style.display = "none"; });
 
   // ================== ОБМЕН NVC ==================
   document.getElementById("exchangeForm").addEventListener("submit", function(e) {
