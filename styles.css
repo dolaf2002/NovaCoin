@@ -74,4 +74,4 @@ footer { background: #0d1117; text-align: center; padding: 25px; font-size: 0.9r
 
 #video { width: 300px; border: 2px solid #58a6ff; border-radius: 12px; margin: 20px auto; display: block; }
 #cameraMessage { text-align: center; margin: 10px 0 20px; font-size: 18px; color: #58a6ff; }
-#mainContent { display: none; }
+#mainContent { display: none; } 
