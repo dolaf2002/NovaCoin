@@ -40,6 +40,7 @@
             height: auto;
             display: block;
             margin: 0 auto;
+            border-radius: 26px;
         }
 
         /* -------------------------------------------------------------------- */
@@ -456,9 +457,10 @@
         .gallery-img {
             width: 100%;
             object-fit: cover;
+            border-radius: 24px;
             filter: grayscale(100%) contrast(105%) brightness(95%);
             transition: all 0.9s cubic-bezier(0.25, 1, 0.5, 1);
-            border-radius: 2px;
+            border-radius: 24px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
         .gallery-img:hover {
@@ -851,7 +853,6 @@
             setAnimatedValue("minutes", minutes);
             setAnimatedValue("seconds", seconds);
         }
-        
 
         setInterval(updateWeddingCountdown, 1000);
     </script>
