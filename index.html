@@ -1,1 +1,863 @@
-գ
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Արման & Սոֆիա - Հրավիրատոմս / Пригласительный</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Ընդհանուր կարգավորումներ և էջի շարժի արգելափակում */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #dcd7cd;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z' fill='none' stroke='%23bda89b' stroke-width='0.4' stroke-opacity='0.4'/%3E%3C/svg%3E");
+            color: #2c2c2c;
+            line-height: 1.7;
+            text-align: center;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+            position: relative;
+        }
+        section {
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        h1, h2, h3, .wedding-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+        
+        /* Նկարների էլեգանտ կլորացում */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 24px;
+        }
+
+        /* Շքեղ բաժանարարներ */
+        .wedding-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px auto;
+            opacity: 0.7;
+            max-width: 300px;
+        }
+        .wedding-divider::before, .wedding-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #b9975a, transparent);
+        }
+        .wedding-divider span {
+            font-size: 18px;
+            color: #b9975a;
+            margin: 0 15px;
+        }
+
+        /* ԼԵԶՎԻ ԸՆՏՐՈՒԹՅԱՆ ՊԱՏՈՒՀԱՆ */
+        .language-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1f1d1a 0%, #121110 100%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.8s;
+        }
+        .language-overlay.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .lang-title-container {
+            margin-bottom: 50px;
+            padding: 0 20px;
+            animation: slideDown 1.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+        .lang-title-main {
+            font-family: 'Cormorant Garamond', serif;
+            color: #e6e1d5;
+            font-size: 36px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+        .lang-title-sub {
+            color: #b9975a;
+            font-size: 15px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        .lang-btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            width: 240px;
+            animation: fadeIn 2.2s ease-in forwards;
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+        .lang-btn {
+            background: transparent;
+            color: #e6e1d5;
+            border: 1px solid rgba(185, 151, 90, 0.4);
+            padding: 16px 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .lang-btn:hover {
+            color: #121110;
+            background-color: #b9975a;
+            border-color: #b9975a;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            letter-spacing: 5px;
+        }
+
+        /* ԱՆԻՄԱՑԻԱՆԵՐ */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulseGlow {
+            0% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(185,151,90,0.4)); }
+            50% { transform: scale(1.04); filter: drop-shadow(0 0 10px rgba(185,151,90,0.6)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 2px rgba(185,151,90,0.4)); }
+        }
+        @keyframes letterSpacingExpand { from { letter-spacing: 2px; opacity: 0; } to { letter-spacing: 8px; opacity: 1; } }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 1s cubic-bezier(0.25, 1, 0.5, 1); }
+        .reveal-scale { opacity: 0; transform: scale(0.97); transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1); }
+        .reveal-left { opacity: 0; transform: translateX(-15px); transition: all 1s cubic-bezier(0.25, 1, 0.5, 1); }
+        .reveal-right { opacity: 0; transform: translateX(15px); transition: all 1s cubic-bezier(0.25, 1, 0.5, 1); }
+        
+        .reveal.active, .reveal-scale.active, .reveal-left.active, .reveal-right.active {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+        }
+
+        /* 1. HERO SECTION */
+        .hero {
+            background-color: #1a1917; 
+            color: #ffffff;
+            padding: 90px 20px 60px 20px;
+            position: relative;
+            background-image: linear-gradient(rgba(26, 25, 23, 0.75), rgba(26, 25, 23, 0.85)), url('https://i.postimg.cc/h40SVC46/DSC3311.jpg');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid rgba(185, 151, 90, 0.3);
+        }
+        .hero-names {
+            font-size: 56px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 300;
+            color: #f3f0e9;
+        }
+        .hero-names span { display: block; }
+        .rings-icon { width: 45px; margin: 25px auto; animation: pulseGlow 3s infinite ease-in-out; }
+        .invitation-text {
+            font-size: 20px;
+            margin-bottom: 80px;
+            font-weight: 300;
+            color: #b9975a;
+            animation: letterSpacingExpand 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+        .hero-footer {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid rgba(185, 151, 90, 0.2);
+            padding-top: 20px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #d1cac0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 2. ՄԵՆՔ SECTION */
+        .we-section { padding: 80px 20px 40px 20px; }
+        .section-title {
+            font-size: 26px;
+            letter-spacing: 6px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            color: #383531;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background-color: #b9975a;
+            transition: width 0.8s ease;
+            transform: translateX(-50%);
+        }
+        .reveal.active.section-title::after { width: 50px; }
+        
+        .main-photo-container {
+            margin-bottom: 40px;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 12px;
+            background-color: #fbf9f6;
+            border: 1px solid rgba(185, 151, 90, 0.25);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            border-radius: 28px;
+        }
+        .main-photo-container img {
+            border-radius: 20px;
+        }
+        
+        /* ԻՆՏԵՐԱԿՏԻՎ ԲԱՑԻԿ */
+        .interactive-card-wrapper {
+            max-width: 450px;
+            min-height: 400px;
+            margin: 0 auto 50px auto;
+            position: relative;
+        }
+        .envelope-card {
+            background-color: #fbf9f5;
+            border: 1px solid #e5dfd5;
+            padding: 50px 30px;
+            box-shadow: 0 15px 35px rgba(40, 36, 30, 0.08);
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            z-index: 2;
+            border-radius: 16px;
+            transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1), transform 0.7s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.7s;
+        }
+        .envelope-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12); border-color: #b9975a; }
+        .envelope-card.fade-out { opacity: 0; transform: scale(0.94) translateY(-15px); visibility: hidden; pointer-events: none; }
+        .envelope-names { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300; color: #1a1917; }
+        .envelope-sub { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #7a7368; margin-top: 10px; }
+        
+        .wax-seal {
+            width: 85px;
+            height: 85px;
+            background: radial-gradient(circle, #decbb2 0%, #b9975a 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.4), 0 5px 15px rgba(185,151,90,0.3);
+            position: relative;
+        }
+        .wax-seal svg { width: 40px; height: 40px; opacity: 0.7; fill: #1a1917; }
+        .click-to-open { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #9c9284; font-weight: 400; }
+
+        .letter-content {
+            background-color: #ffffff;
+            border: 1px solid #e5dfd5;
+            padding: 50px 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            border-radius: 16px;
+            transform: scale(0.96);
+            transition: opacity 0.8s ease 0.1s, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1) 0.1s;
+            pointer-events: none;
+        }
+        .letter-content.fade-in { opacity: 1; transform: scale(1); pointer-events: auto; }
+        .letter-title { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: #1a1917; margin-bottom: 25px; font-weight: 400; }
+        .letter-paragraph { font-family: 'Montserrat', sans-serif; font-size: 14px; line-height: 2.1; color: #4a453e; font-weight: 300; }
+        .letter-paragraph strong { font-weight: 400; color: #b9975a; }
+
+        /* COUNTDOWN */
+        .countdown-container {
+            max-width: 460px;
+            margin: 0 auto;
+            padding: 25px 10px;
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+            border-top: 1px solid rgba(185, 151, 90, 0.25);
+            border-bottom: 1px solid rgba(185, 151, 90, 0.25);
+        }
+        .countdown-item { display: flex; flex-direction: column; align-items: center; }
+        .countdown-number { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 400; color: #1a1917; }
+        .countdown-label { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: #7a7368; margin-top: 4px; }
+
+        /* 3. MIDDLE BANNER IMAGE */
+        .middle-banner { 
+            width: calc(100% - 40px); 
+            max-width: 600px;
+            height: 300px; 
+            object-fit: cover; 
+            filter: grayscale(40%) contrast(105%); 
+            transition: filter 1.2s ease; 
+            margin: 0 auto;
+            border-radius: 24px;
+        }
+
+        /* 4. PROGRAM SECTION */
+        .program-section { padding: 80px 20px; max-width: 550px; margin: 0 auto; }
+        .program-table { width: 100%; margin-top: 40px; }
+        .program-row { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; border-bottom: 1px solid #dbd3c5; font-size: 13px; letter-spacing: 1px; color: #3a3834; transition: all 0.4s ease; }
+        .program-row:hover { padding-left: 8px; background-color: rgba(185, 151, 90, 0.05); border-bottom-color: #b9975a; }
+        .program-time { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; width: 85px; color: #b9975a; flex-shrink: 0; }
+        .program-text { font-weight: 300; flex-grow: 1; text-align: left; padding-left: 20px; line-height: 1.5; }
+        .map-link { display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 16px; width: 36px; height: 36px; background-color: #fbf9f5; border: 1px solid #dbd3c5; border-radius: 50%; transition: all 0.3s ease; flex-shrink: 0; }
+        .map-link:hover { background-color: #b9975a; border-color: #b9975a; transform: scale(1.1); color: #fff; }
+
+        /* 5. RECEPTION / DETAILS SECTION */
+        .reception-section { padding: 60px 20px; max-width: 500px; margin: 0 auto; }
+        .reception-block { margin-bottom: 40px; padding: 20px; background-color: #fbf9f5; border: 1px solid #e5dfd5; border-radius: 16px; text-align: center; }
+        .reception-block h3 { font-size: 18px; font-weight: 400; letter-spacing: 2px; margin-bottom: 12px; color: #1a1917; text-transform: uppercase; }
+        .reception-block p { font-size: 13px; font-weight: 300; color: #5a554e; line-height: 1.7; }
+
+        /* 6. GALLERY SECTION */
+        .gallery-section { padding: 40px 20px; }
+        .gallery-grid { display: flex; flex-direction: column; gap: 25px; max-width: 450px; margin: 0 auto; }
+        .gallery-img { width: 100%; object-fit: cover; border: 6px solid #fbf9f5; box-shadow: 0 10px 25px rgba(0,0,0,0.06); transition: all 1s cubic-bezier(0.25, 1, 0.5, 1); border-radius: 24px; }
+        .gallery-img:hover { transform: scale(1.02); box-shadow: 0 15px 30px rgba(185,151,90,0.2); border-color: #fbf9f5; }
+        .img-portrait { height: 500px; }
+        .img-landscape { aspect-ratio: 16 / 11; }
+
+        /* RSVP FORM */
+        .rsvp-section { padding: 80px 20px; max-width: 450px; margin: 0 auto; }
+        .rsvp-form {
+            background-color: #ffffff;
+            padding: 45px 30px;
+            border: 1px solid #e5dfd5;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.04);
+            text-align: left;
+            position: relative;
+            border-radius: 20px;
+        }
+        .rsvp-form::before {
+            content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1px solid rgba(185, 151, 90, 0.2); pointer-events: none; border-radius: 12px;
+        }
+        .form-group { margin-bottom: 26px; position: relative; z-index: 1; }
+        .form-label {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #6a6358;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .form-input, .form-select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e5dfd5;
+            background-color: #fdfcfb;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            color: #2c2c2c;
+            outline: none;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+        .form-input:focus, .form-select:focus { border-color: #b9975a; background-color: #ffffff; box-shadow: 0 0 8px rgba(185,151,90,0.15); }
+        
+        .radio-group { display: flex; gap: 20px; margin-top: 8px; }
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #4a453e;
+            cursor: pointer;
+            font-weight: 300;
+        }
+        .radio-label input { accent-color: #b9975a; width: 17px; height: 17px; }
+
+        .submit-btn {
+            width: 100%;
+            background-color: #1a1917;
+            color: #b9975a;
+            border: 1px solid #b9975a;
+            padding: 18px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 1;
+            border-radius: 8px;
+        }
+        .submit-btn:hover { background-color: #b9975a; color: #1a1917; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(185,151,90,0.3); }
+
+        /* CONTACTS - ԹԱՐՄԱՑՎԱԾ ՖՈՆՈՎ ԲԱԺԻՆ */
+        .contact-section { 
+            background-image: linear-gradient(rgba(26, 25, 23, 0.86), rgba(26, 25, 23, 0.92)), url('https://i.postimg.cc/JzSxrVW6/IMG-2656.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #ffffff; 
+            padding: 100px 20px; 
+            min-height: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-top: 1px solid rgba(185, 151, 90, 0.3); 
+        }
+        .contact-title { font-size: 28px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 30px; color: #f3f0e9; }
+        .contact-details { font-size: 14px; font-weight: 300; letter-spacing: 1px; line-height: 2.4; color: #cbc5ba; }
+        .contact-details a { color: #b9975a; text-decoration: none; border-bottom: 1px solid rgba(185,151,90,0.4); transition: all 0.3s ease; }
+        .contact-details a:hover { color: #fff; border-bottom-color: #fff; padding-left: 5px; }
+        .designer-phone { font-size: 12px; margin-top: 4px; opacity: 0.8; }
+        .designer-phone a { border: none; }
+    </style>
+</head>
+<body>
+
+    <audio id="weddingMusic" loop>
+        <source src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Erik_Satie_-_Gymnop%C3%A9die_No._1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="language-overlay" id="languageOverlay">
+        <div class="lang-title-container">
+            <div class="lang-title-main">Ընտրեք լեզուն</div>
+            <div class="lang-title-sub">Выберите язык интерфейса</div>
+        </div>
+        <div class="lang-btn-container">
+            <button class="lang-btn" onclick="selectLanguage('hy')">ՀԱՅԵՐԵՆ</button>
+            <button class="lang-btn" onclick="selectLanguage('ru')">РУССКИЙ</button>
+        </div>
+    </div>
+
+    <section class="hero">
+        <h1 class="hero-names">
+            <span id="heroGroomName">Արման</span>
+            <span id="heroBrideName">Սոֆիա</span>
+        </h1>
+        
+        <div class="rings-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#b9975a" stroke-width="1.2">
+                <circle cx="26" cy="38" r="15"/>
+                <circle cx="38" cy="38" r="15"/>
+            </svg>
+        </div>
+
+        <div class="invitation-text" id="heroInvitationTxt">ՀՐԱՎԻՐԱՏՈՄՍ</div>
+
+        <div class="hero-footer">
+            <div id="heroDateLocation">Հուլիսի 27 Վիկտորիա</div>
+            <div id="heroWelcomeTxt">Սիրով սպասում ենք ձեզ</div>
+        </div>
+    </section>
+
+    <section class="we-section">
+        <div class="section-title reveal" id="secTitleWe">Մենք</div>
+        
+        <div class="main-photo-container reveal-scale">
+            <img src="https://i.postimg.cc/gjG6z4jc/IMG-2652.png" alt="Արման և Սոֆիա">
+        </div>
+
+        <div class="interactive-card-wrapper reveal-scale">
+            <div class="envelope-card" id="envelopeCard" onclick="openEnvelope()">
+                <div>
+                    <div class="envelope-names" id="envelopeNamesTxt">Արման և Սոֆիա</div>
+                    <div class="envelope-sub" id="envelopeSubTxt">Դուք հրավիրված եք մեր հարսանիքին</div>
+                </div>
+                <div class="wax-seal">
+                    <svg viewBox="0 0 64 64" version="1.1">
+                        <path d="M32,15 C22,15 16,24 16,34 C16,45 32,54 32,54 C32,54 48,45 48,34 C48,24 42,15 32,15 Z" fill="none" stroke="#1a1917" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <div class="click-to-open" id="clickToOpenTxt">Սեղմեք բացելու համար</div>
+            </div>
+
+            <div class="letter-content" id="letterContent">
+                <div class="letter-title" id="letterTitleTxt">Հարգելի՛ հյուրեր</div>
+                <p class="letter-paragraph" id="letterParagraphTxt">
+                    Ուրախ ենք հրավիրել Ձեզ մեր ընտանեկան առաջին տոնակատարությանը՝ <strong>մեր հարսանիքին</strong>:<br><br>
+                    Մենք շատ ենք ցանկանում, որ այդ օրը մեր kողքին լինեն ամենամտերիմ մարդիկ։ <br>
+                    Հանդիսությունը կկայանա հուլիսի 27-ին՝ Գյումրու «Վիկտորիա» ռեստորանային համալիրում։
+                </p>
+            </div>
+        </div>
+
+        <div class="countdown-container reveal-scale">
+            <div class="countdown-item">
+                <span class="countdown-number" id="months">-</span>
+                <span class="countdown-label" id="lblMonth">Ամիս</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="weeks">-</span>
+                <span class="countdown-label" id="lblWeek">Շաբաթ</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">-</span>
+                <span class="countdown-label" id="lblDay">Օր</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">-</span>
+                <span class="countdown-label" id="lblHour">Ժամ</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">-</span>
+                <span class="countdown-label" id="lblMin">Րոպե</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">-</span>
+                <span class="countdown-label" id="lblSec">Վայրկյան</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="wedding-divider"><span>❦</span></div>
+
+    <section style="padding: 0 20px;">
+        <img class="middle-banner reveal-scale" src="https://i.postimg.cc/rpgdn8q2/DSC3332.jpg" alt="Wedding Moment">
+    </section>
+
+    <section class="program-section">
+        <div class="section-title reveal" id="secTitleProgram">ԾՐԱԳԻՐ</div>
+        <div class="program-table">
+            <div class="program-row reveal-left">
+                <div class="program-time" id="progTime1">11:00</div>
+                <div class="program-text" id="progTxt1">Փեսայի տուն</div>
+                <a href="#" target="_blank" class="map-link" id="mapLink1">📍</a>
+            </div>
+            <div class="program-row reveal-right">
+                <div class="program-time" id="progTime2">12:00</div>
+                <div class="program-text" id="progTxt2">Հարսի տուն</div>
+                <a href="#" target="_blank" class="map-link" id="mapLink2">📍</a>
+            </div>
+            <div class="program-row reveal-left">
+                <div class="program-time" id="progTime3">14:00</div>
+                <div class="program-text" id="progTxt3">Եկեղեցի</div>
+                <a href="#" target="_blank" class="map-link" id="mapLink3">📍</a>
+            </div>
+            <div class="program-row reveal-right">
+                <div class="program-time" id="progTime4">17:00</div>
+                <div class="program-text" id="progTxt4">Հանդիսությունների սրահ</div>
+                <a href="#" target="_blank" class="map-link" id="mapLink4">📍</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="wedding-divider"><span>❦</span></div>
+
+    <section class="reception-section">
+        <div class="section-title reveal" id="secTitleReception">ՄԱՆՐԱՄԱՍՆԵՐ</div>
+        <div class="reception-block reveal" style="margin-top: 20px;">
+            <h3 id="recTitle1">Հանդիսության վայրը</h3>
+            <p id="recDesc1">Մեր հարսանեկան խնջույքը կկայանա «Վիկտորիա» համալիրի հանդիսությունների սրահում։ Սիրով սպասում ենք բոլորիդ...</p>
+        </div>
+        <div class="reception-block reveal">
+            <h3 id="recTitle3">Կայանատեղի</h3>
+            <p id="recDesc3">Ռեստորանային համալիրի տարածքում առկա է անվճար և ընդարձակ կայանատեղի...</p>
+        </div>
+    </section>
+
+    <div class="wedding-divider"><span>❦</span></div>
+
+    <section class="gallery-section">
+        <div class="gallery-grid">
+            <img class="gallery-img img-portrait reveal-scale" src="https://i.postimg.cc/3wQVxDXv/IMG-2649.png" alt="Couple">
+            <img class="gallery-img img-landscape reveal-right" src="https://i.postimg.cc/YCrL1Gwj/DSC3321.jpg" alt="Kiss">
+        </div>
+    </section>
+
+    <div class="wedding-divider"><span>❦</span></div>
+
+    <section class="gift-section" style="padding: 10px 20px;">
+        <p class="gift-text reveal" id="giftSectionTxt">
+            Ձեր ներկայությունն արդեն իսկ լավագույն նվերն է մեզ համար։
+        </p>
+    </section>
+
+    <section class="rsvp-section reveal-scale">
+        <div class="section-title reveal" id="secTitleRsvp" style="margin-bottom: 30px; display: block;">ՀԱՍՏԱՏՈՒՄ</div>
+        
+        <form class="rsvp-form" action="https://formspree.io/f/xlgvzegg" method="POST">
+            <div class="form-group">
+                <label class="form-label" id="lblFormName">Անուն Ազգանուն</label>
+                <input type="text" name="Guest Name" id="inputGuestName" class="form-input" required placeholder="Անուն Ազգանուն">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" id="lblFormInvitedBy">Ում կողմից եք հրավիրված</label>
+                <select name="Invited By" class="form-select">
+                    <option value="Groom" id="optGroom">Փեսայի կողմից</option>
+                    <option value="Bride" id="optBride">Հարսի կողմից</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" id="lblFormAttendance">Կմասնակցե՞ք արդյոք</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" name="Attendance" value="Yes, Attending" checked onclick="toggleGuestCount(true)">
+                        <span id="radioYes">Կմասնակցեմ</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="Attendance" value="No, Cannot Attend" onclick="toggleGuestCount(false)">
+                        <span id="radioNo">Ցավոք չեմ կարող</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group" id="guestCountGroup">
+                <label class="form-label" id="lblFormCount">Հյուրերի քանակը (ներառյալ Ձեզ)</label>
+                <select name="Total Guests" class="form-select">
+                    <option value="1">1</option>
+                    <option value="2" selected>2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5+</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-btn" id="btnSubmitForm">Ուղարկել պատասխանը</button>
+        </form>
+    </section>
+
+    <div class="wedding-divider"><span>❦</span></div>
+
+    <section class="contact-section">
+        <h2 class="contact-title reveal" id="secTitleContact">Հետադարձ կապ</h2>
+        <div class="contact-details reveal">
+            <p>+374 (99) 00-00-00</p>
+            <p><a href="mailto:info@wedding.am">info@wedding.am</a></p>
+            <p>Design By Grigoryan'sCompany</p>
+            <p class="designer-phone"><a href="tel:+37495996999">+374 95 996999</a></p>
+        </div>
+    </section>
+
+    <script>
+        const translations = {
+            hy: {
+                groomName: "Արման", brideName: "Սոֆիա", envelopeNames: "Արման և Սոֆիա",
+                heroInvitation: "ՀՐԱՎԻՐԱՏՈՄՍ", heroDateLoc: "Հուլիսի 27 Վիկտորիա", heroWelcome: "Սիրով սպասում ենք ձեզ", titleWe: "Մենք",
+                envelopeSub: "Դուք հրավիրված եք մեր հարսանիքին", clickToOpen: "Սեղմեք բացելու համար", letterTitle: "Հարգելի՛ հյուրեր",
+                letterParagraph: "Ուրախ ենք հրավիրել Ձեզ մեր ընտանեկան առաջին տոնակատարությանը՝ <strong>մեր հարսանիքին</strong>:<br><br>Մենք շատ ենք ցանկանում, որ այդ օրը մեր կողքին լինեն ամենամտերիմ մարդիկ։ <br>Հանդիսությունը կկայանա հուլիսի 27-ին՝ Գյումրու «Վիկտորիա» ռեստորանային համալիրում։",
+                lblMonth: "Ամիս", lblWeek: "Շաբաթ", lblDay: "Օր", lblHour: "Ժամ", lblMin: "Րոպե", lblSec: "Վայրկյան",
+                titleProgram: "ԾՐԱԳԻՐ", time1: "11:00", time2: "12:00", time3: "14:00", time4: "17:00",
+                prog1: "Փեսայի տուն", prog2: "Հարսի տուն", prog3: "Եկեղեցի՝ Հառիճավանք", prog4: "Հանդիսությունների սրահ՝ ք. Գյումրի «Վիկտորիա» ռեստորան",
+                map1: "https://www.google.com/maps/search/?api=1&query=40.811057,43.854845",
+                map2: "https://www.google.com/maps/search/?api=1&query=40.627111,43.979495",
+                map3: "https://www.google.com/maps/search/?api=1&query=Հառիճավանք",
+                map4: "https://www.google.com/maps/search/?api=1&query=Վիկտորիա+ռեստորան+Գյումրի",
+                titleReception: "ՄԱՆՐԱՄԱՍՆԵՐ", recTitle1: "Հանդիսության վայրը", recDesc1: "Մեր հարսանեկան խնջույքը կկայանա «Վիկտորիա» համալիրի հանդիսությունների սրահում։ Սիրով սպասում ենք բոլորիդ...",
+                recTitle3: "Կայանատեղի", recDesc3: "Ռեստորանային համալիրի տարածքում առկա է անվճար և ընդարձակ կայանատեղի...",
+                giftTxt: "Ձեր ներկայությունն արդեն իսկ լավագույն նվերն է մեզ համար։",
+                titleRsvp: "ՀԱՍՏԱՏՈՒՄ", lblFormName: "Անուն Ազգանուն", lblFormAttendance: "Կմասնակցե՞ք արդյոք",
+                placeholderName: "Անուն Ազգանուն",
+                lblFormInvitedBy: "Ում կողմից եք հրավիրված", optGroom: "Փեսայի կողմից", optBride: "Հարսի կողմից",
+                radioYes: "Կմասնակցեմ", radioNo: "Ցավոք չեմ կարող", lblFormCount: "Հյուրերի քանակը (ներառյալ Ձեզ)", btnSubmit: "Ուղարկել պատասխանը",
+                titleContact: "Հետադարձ կապ", countdownFinished: "Հարսանեկան հանդիսությունը սկսվել է:"
+            },
+            ru: {
+                groomName: "Арман", brideName: "София", envelopeNames: "Арман и София",
+                heroInvitation: "ПРИГЛАСИТЕЛЬНЫЙ", heroDateLoc: "27 Июля Виктория", heroWelcome: "Ждем вас с любовью", titleWe: "Мы",
+                envelopeSub: "Вы приглашены на нашу свадьбу", clickToOpen: "Нажмите, чтобы открыть", letterTitle: "Дорогие гости!",
+                letterParagraph: "Мы рады пригласить Вас на наше первое семейное торжество — <strong>нашу свадьбу</strong>!<br><br>Мы очень хотим, чтобы в этот особенный день рядом с нами были самые близкие и дорогие люди.<br>Торжество состоится 27 июля в ресторанном комплексе «Виктория» в городе Гюмри.",
+                lblMonth: "Мес.", lblWeek: "Нед.", lblDay: "Дн.", lblHour: "Час.", lblMin: "Мин.", lblSec: "Сек.",
+                titleProgram: "ПРОГРАММА", time1: "11:00", time2: "12:00", time3: "14:00", time4: "17:00",
+                prog1: "Дом жениха", prog2: "Дом невесты", prog3: "Церковь: Аричаванк", prog4: "Банкетный зал: г. Гюмри, ресторан «Виктория»",
+                map1: "https://www.google.com/maps/search/?api=1&query=40.811057,43.854845",
+                map2: "https://www.google.com/maps/search/?api=1&query=40.627111,43.979495",
+                map3: "https://www.google.com/maps/search/?api=1&query=Аричаванк",
+                map4: "https://www.google.com/maps/search/?api=1&query=Ресторан+Виктория+Гюмри",
+                titleReception: "ДЕТАЛИ", recTitle1: "Место проведения", recDesc1: "Наше торжество пройдет в великолепном банкетном зале комплекса «Виктория»...",
+                recTitle3: "Парковка", recDesc3: "На территории ресторанного комплекса доступна бесплатная парковка...",
+                giftTxt: "Ваше присутствие — самый лучший подарок для нас!",
+                titleRsvp: "ПОДТВЕРЖДЕНИЕ", lblFormName: "Имя Фамилия", lblFormAttendance: "Примите ли вы участие?",
+                placeholderName: "Имя Фамилия",
+                lblFormInvitedBy: "С чьей стороны вы приглашены?", optGroom: "Со стороны жениха", optBride: "Со стороны невесты",
+                radioYes: "Я приду", radioNo: "Не смогу прийти", lblFormCount: "Количество гостей (включая Вас)", btnSubmit: "Отправить ответ",
+                titleContact: "Контакты", countdownFinished: "Свадебное торжество началось!"
+            }
+        };
+
+        let currentLang = 'hy';
+        const audio = document.getElementById("weddingMusic");
+
+        function selectLanguage(lang) {
+            currentLang = lang;
+            
+            // Անունների դինամիկ թարգմանություն
+            document.getElementById("heroGroomName").innerText = translations[lang].groomName;
+            document.getElementById("heroBrideName").innerText = translations[lang].brideName;
+            document.getElementById("envelopeNamesTxt").innerText = translations[lang].envelopeNames;
+
+            document.getElementById("heroInvitationTxt").innerText = translations[lang].heroInvitation;
+            document.getElementById("heroDateLocation").innerText = translations[lang].heroDateLoc;
+            document.getElementById("heroWelcomeTxt").innerText = translations[lang].heroWelcome;
+            document.getElementById("secTitleWe").innerText = translations[lang].titleWe;
+            
+            document.getElementById("envelopeSubTxt").innerText = translations[lang].envelopeSub;
+            document.getElementById("clickToOpenTxt").innerText = translations[lang].clickToOpen;
+            document.getElementById("letterTitleTxt").innerText = translations[lang].letterTitle;
+            document.getElementById("letterParagraphTxt").innerHTML = translations[lang].letterParagraph;
+            
+            document.getElementById("lblMonth").innerText = translations[lang].lblMonth;
+            document.getElementById("lblWeek").innerText = translations[lang].lblWeek;
+            document.getElementById("lblDay").innerText = translations[lang].lblDay;
+            document.getElementById("lblHour").innerText = translations[lang].lblHour;
+            document.getElementById("lblMin").innerText = translations[lang].lblMin;
+            document.getElementById("lblSec").innerText = translations[lang].lblSec;
+            
+            document.getElementById("secTitleProgram").innerText = translations[lang].titleProgram;
+            document.getElementById("progTime1").innerText = translations[lang].time1;
+            document.getElementById("progTime2").innerText = translations[lang].time2;
+            document.getElementById("progTime3").innerText = translations[lang].time3;
+            document.getElementById("progTime4").innerText = translations[lang].time4;
+            document.getElementById("progTxt1").innerText = translations[lang].prog1;
+            document.getElementById("progTxt2").innerText = translations[lang].prog2;
+            document.getElementById("progTxt3").innerText = translations[lang].prog3;
+            document.getElementById("progTxt4").innerText = translations[lang].prog4;
+
+            // Լոկացիաների դինամիկ հղումների թարմացում
+            document.getElementById("mapLink1").href = translations[lang].map1;
+            document.getElementById("mapLink2").href = translations[lang].map2;
+            document.getElementById("mapLink3").href = translations[lang].map3;
+            document.getElementById("mapLink4").href = translations[lang].map4;
+            
+            document.getElementById("secTitleReception").innerText = translations[lang].titleReception;
+            document.getElementById("recTitle1").innerText = translations[lang].recTitle1;
+            document.getElementById("recDesc1").innerText = translations[lang].recDesc1;
+            document.getElementById("recTitle3").innerText = translations[lang].recTitle3;
+            document.getElementById("recDesc3").innerText = translations[lang].recDesc3;
+            
+            document.getElementById("giftSectionTxt").innerText = translations[lang].giftTxt;
+
+            document.getElementById("secTitleRsvp").innerText = translations[lang].titleRsvp;
+            document.getElementById("lblFormName").innerText = translations[lang].lblFormName;
+            document.getElementById("inputGuestName").placeholder = translations[lang].placeholderName;
+            document.getElementById("lblFormAttendance").innerText = translations[lang].lblFormAttendance;
+            document.getElementById("lblFormInvitedBy").innerText = translations[lang].lblFormInvitedBy;
+            document.getElementById("optGroom").innerText = translations[lang].optGroom;
+            document.getElementById("optBride").innerText = translations[lang].optBride;
+            document.getElementById("radioYes").innerText = translations[lang].radioYes;
+            document.getElementById("radioNo").innerText = translations[lang].radioNo;
+            document.getElementById("lblFormCount").innerText = translations[lang].lblFormCount;
+            document.getElementById("btnSubmitForm").innerText = translations[lang].btnSubmit;
+            
+            document.getElementById("secTitleContact").innerText = translations[lang].titleContact;
+
+            const overlay = document.getElementById("languageOverlay");
+            overlay.classList.add("hide");
+            setTimeout(() => { overlay.style.display = 'none'; }, 800);
+
+            playMusic();
+            initScrollReveal();
+            updateWeddingCountdown();
+        }
+
+        function openEnvelope() {
+            document.getElementById("envelopeCard").classList.add("fade-out");
+            document.getElementById("letterContent").classList.add("fade-in");
+        }
+
+        function toggleGuestCount(show) {
+            const countGroup = document.getElementById("guestCountGroup");
+            if (show) {
+                countGroup.style.display = "block";
+            } else {
+                countGroup.style.display = "none";
+            }
+        }
+
+        function playMusic() {
+            audio.play().catch(error => { console.log("Autoplay blocked"); });
+        }
+
+        function initScrollReveal() {
+            const revealElements = document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                    else entry.target.classList.remove('active');
+                });
+            }, { threshold: 0.05 });
+            revealElements.forEach(element => revealObserver.observe(element));
+        }
+
+        function setAnimatedValue(elementId, value) {
+            const el = document.getElementById(elementId);
+            if (el && el.innerText !== String(value)) {
+                el.innerText = value;
+            }
+        }
+
+        function updateWeddingCountdown() {
+            const weddingDate = new Date("July 27, 2026 00:00:00").getTime();
+            const now = new Date().getTime();
+            const difference = weddingDate - now;
+
+            if (difference < 0) {
+                document.querySelector(".countdown-container").innerHTML = `<div style='grid-column: span 6; font-family: "Cormorant Garamond", serif; font-size: 20px;'>${translations[currentLang].countdownFinished}</div>`;
+                return;
+            }
+
+            const msInSecond = 1000, msInMinute = 1000 * 60, msInHour = 1000 * 60 * 60, msInDay = 1000 * 60 * 60 * 24;
+            let totalDays = Math.floor(difference / msInDay);
+            const averageDaysInMonth = 30.44;
+            const months = Math.floor(totalDays / averageDaysInMonth);
+            let remainingDaysAfterMonths = totalDays % averageDaysInMonth;
+            const weeks = Math.floor(remainingDaysAfterMonths / 7);
+            const days = Math.floor(remainingDaysAfterMonths % 7);
+            const hours = Math.floor((difference % msInDay) / msInHour);
+            const minutes = Math.floor((difference % msInHour) / msInMinute);
+            const seconds = Math.floor((difference % msInMinute) / msInSecond);
+
+            setAnimatedValue("months", months);
+            setAnimatedValue("weeks", weeks);
+            setAnimatedValue("days", days);
+            setAnimatedValue("hours", hours);
+            setAnimatedValue("minutes", minutes);
+            setAnimatedValue("seconds", seconds);
+        }
+
+        setInterval(updateWeddingCountdown, 1000);
+    </script>
+</body>
+</html>
