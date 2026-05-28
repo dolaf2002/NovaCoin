@@ -173,7 +173,6 @@
         }
         /* -------------------------------------------------------------------- */
 
-
         /* 1. HERO SECTION */
         .hero {
             background-color: #1b1b1a; 
@@ -348,7 +347,7 @@
             padding: 60px 20px;
             background-color: #dfdad0;
             text-align: left;
-            max-width: 500px;
+            max-width: 530px;
             margin: 0 auto;
             overflow: hidden; /* Պաշտպանում է կողային անիմացիաներից */
         }
@@ -367,6 +366,7 @@
         }
         .program-row {
             display: flex;
+            align-items: center;
             justify-content: space-between;
             padding: 18px 0;
             border-bottom: 1px solid #bda89b;
@@ -376,15 +376,16 @@
             transition: all 0.4s ease;
         }
         .program-row:hover {
-            padding-left: 15px;
+            padding-left: 5px;
             background-color: rgba(27, 27, 26, 0.04);
             border-bottom-color: #1b1b1a;
         }
         .program-time {
             font-weight: 300;
-            width: 80px;
+            width: 75px;
             color: #666;
             transition: color 0.3s ease;
+            flex-shrink: 0;
         }
         .program-row:hover .program-time {
             color: #1b1b1a;
@@ -394,7 +395,28 @@
             font-weight: 300;
             flex-grow: 1;
             text-align: left;
-            padding-left: 20px;
+            padding-left: 15px;
+            padding-right: 10px;
+            line-height: 1.4;
+        }
+        /* Լոկացիայի կոճակի ոճերը */
+        .map-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 20px;
+            width: 35px;
+            height: 35px;
+            background-color: rgba(27, 27, 26, 0.05);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .map-link:hover {
+            background-color: #1b1b1a;
+            transform: scale(1.15);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
         }
 
         /* 5. RECEPTION SECTION */
@@ -621,24 +643,24 @@
         
         <div class="program-table">
             <div class="program-row reveal-left">
-                <div class="program-time">5:00 PM</div>
-                <div class="program-text" id="progTxt1">Welcome Photos & Cocktails</div>
+                <div class="program-time" id="progTime1">11:00 AM</div>
+                <div class="program-text" id="progTxt1">Փեսայի հասցեն</div>
+                <a href="https://maps.google.com/?q=Gyumri+Shinararneri+9/29" target="_blank" class="map-link" title="Դիտել քարտեզի վրա">📍</a>
             </div>
             <div class="program-row reveal-right">
-                <div class="program-time">6:00 PM</div>
-                <div class="program-text" id="progTxt2">Dinner Program</div>
+                <div class="program-time" id="progTime2">12:00 PM</div>
+                <div class="program-text" id="progTxt2">Հարսիկի հասցեն</div>
+                <a href="https://maps.google.com/?q=40.627111,43.979495" target="_blank" class="map-link" title="Դիտել քարտեզի վրա">📍</a>
             </div>
             <div class="program-row reveal-left">
-                <div class="program-time">7:00 PM</div>
-                <div class="program-text" id="progTxt3">Toasts & Speeches</div>
+                <div class="program-time" id="progTime3">2:00 PM</div>
+                <div class="program-text" id="progTxt3">Եկեղեցի</div>
+                <a href="https://maps.google.com/?q=Harichavank+Monastery" target="_blank" class="map-link" title="Դիտել քարտեզի վրա">📍</a>
             </div>
             <div class="program-row reveal-right">
-                <div class="program-time">8:00 PM</div>
-                <div class="program-text" id="progTxt4">Official Picture Taking</div>
-            </div>
-            <div class="program-row reveal-left">
-                <div class="program-time">9:00 PM</div>
-                <div class="program-text" id="progTxt5">Open Bar & Dancing</div>
+                <div class="program-time" id="progTime4">5:00 PM</div>
+                <div class="program-text" id="progTxt4">Հանդիսությունների սրահ</div>
+                <a href="https://maps.google.com/?q=Victoria+Restaurant+Gyumri" target="_blank" class="map-link" title="Դիտել քարտեզի վրա">📍</a>
             </div>
         </div>
     </section>
@@ -649,11 +671,6 @@
         <div class="reception-block reveal" style="margin-top: 30px;">
             <h3 id="recTitle1">Reception Venue</h3>
             <p id="recDesc1">Our reception will take place in The Ballroom at Real Gardens — an open-air garden space. The celebration will be outdoors, so expect fresh air, soft grass, and lots of golden hour glow.</p>
-        </div>
-
-        <div class="reception-block reveal">
-            <h3 id="recTitle2">Dress Code</h3>
-            <p id="recDesc2">Garden party chic! Floral, breathable fabrics and comfortable shoes (heels are optional, sinking in the grass is not required). Pastel colors are preferred but not mandatory!</p>
         </div>
 
         <div class="reception-block reveal">
@@ -698,16 +715,14 @@
                 mainParagraph: "Ողջույն հարգելի հյուր, սիրով հրավիրում ենք ձեզ մեր հարսանիքին։ Հարսանիքը կկայանա Հուլիսի 27-ին Գյումրու «Վիկտորիա» ռեստորանային համալիրում։",
                 lblMonth: "Ամիս", lblWeek: "Շաբաթ", lblDay: "Օր", lblHour: "Ժամ", lblMin: "Րոպե", lblSec: "Վայրկյան",
                 titleProgram: "ԾՐԱԳԻՐ",
-                prog1: "Հյուրերի դիմավորում և ֆոտոսեսիա",
-                prog2: "Հարսանեկան խնջույքի սկիզբ",
-                prog3: "Բարեմաղթանքներ և կենացներ",
-                prog4: "Պաշտոնական լուսանկարահանում",
-                prog5: "Տորթի արարողություն և դիսկոտեկ",
+                time1: "11:00", time2: "12:00", time3: "14:00", time4: "17:00",
+                prog1: "Փեսայի հասցեն՝ ք. Գյումրի Շինարարների 9/29",
+                prog2: "Հարսիկի հասցեն՝ ք. Արթիկ Պարույր Սևակի 16",
+                prog3: "Եկեղեցի՝ Հառիճավանք",
+                prog4: "Հանդիսությունների սրահ՝ ք. Գյումրի «Վիկտորիա» ռեստորան",
                 titleReception: "ՄԱՆՐԱՄԱՍՆԵՐ",
                 recTitle1: "Հանդիսության վայրը",
                 recDesc1: "Մեր հարսանեկան խնջույքը կկայանա «Վիկտորիա» համալիրի հանդիսությունների սրահում։ Սիրով սպասում ենք բոլորիդ՝ միասին անմոռանալի օր անցկացնելու համար։",
-                recTitle2: "Դրես կոդ",
-                recDesc2: "Խնդրում ենք համապատասխանել դասական և էլեգանտ ոճին։ Ցանկալի են բաց և պաստելային գույների հագուստները: Սև և վառ գույները խորհուրդ չեն տրվում:",
                 recTitle3: "Կայանատեղի",
                 recDesc3: "Ռեստորանային համալիրի տարածքում առկա է անվճար և ընդարձակ կայանատեղի բոլոր հյուրերի մեքենաների համար։",
                 giftTxt: "Ձեր ներկայությունն արդեն իսկ լավագույն նվերն է մեզ համար։",
@@ -722,16 +737,14 @@
                 mainParagraph: "Приветствуем вас, дорогой гость! С радостью приглашаем вас на нашу свадьбу, которая состоится 27 июля в ресторанном комплексе «Виктория» в городе Гюмри.",
                 lblMonth: "Мес.", lblWeek: "Нед.", lblDay: "Дн.", lblHour: "Час.", lblMin: "Мин.", lblSec: "Сек.",
                 titleProgram: "ПРОГРАММА",
-                prog1: "Встреча гостей и фотосессия",
-                prog2: "Начало свадебного банкета",
-                prog3: "Пожелания и тосты",
-                prog4: "Официальная фотосессия",
-                prog5: "Свадебный торт и дискотека",
+                time1: "11:00", time2: "12:00", time3: "14:00", time4: "17:00",
+                prog1: "Адрес жениха: г. Гюмри, Шинарарнери 9/29",
+                prog2: "Адрес невесты: г. Артик, Паруйра Севака 16",
+                prog3: "Церковь: Аричаванк",
+                prog4: "Банкетный зал: г. Гюмри, ресторан «Виктория»",
                 titleReception: "ДЕТАЛИ",
                 recTitle1: "Место проведения",
                 recDesc1: "Наше торжество пройдет в великолепном банкетном зале комплекса «Виктория». Мы будем счастливы разделить с вами этот особенный и праздничный день.",
-                recTitle2: "Дресс-код",
-                recDesc2: "Будем рады видеть вас в элегантных вечерних нарядах. Преимущество отдается светлым и пастельным тонам. Темные оттенки нежелательны.",
                 recTitle3: "Парковка",
                 recDesc3: "На территории ресторанного комплекса доступна бесплатная и охраняемая парковка для автомобилей всех наших гостей.",
                 giftTxt: "Ваше присутствие — самый лучший подарок для нас!",
@@ -760,24 +773,28 @@
             document.getElementById("lblSec").innerText = translations[lang].lblSec;
             
             document.getElementById("secTitleProgram").innerText = translations[lang].titleProgram;
+            
+            // Ժամերի և տեքստերի թարգմանություն
+            document.getElementById("progTime1").innerText = translations[lang].time1;
+            document.getElementById("progTime2").innerText = translations[lang].time2;
+            document.getElementById("progTime3").innerText = translations[lang].time3;
+            document.getElementById("progTime4").innerText = translations[lang].time4;
+
             document.getElementById("progTxt1").innerText = translations[lang].prog1;
             document.getElementById("progTxt2").innerText = translations[lang].prog2;
             document.getElementById("progTxt3").innerText = translations[lang].prog3;
             document.getElementById("progTxt4").innerText = translations[lang].prog4;
-            document.getElementById("progTxt5").innerText = translations[lang].prog5;
             
             document.getElementById("secTitleReception").innerText = translations[lang].titleReception;
             document.getElementById("recTitle1").innerText = translations[lang].recTitle1;
             document.getElementById("recDesc1").innerText = translations[lang].recDesc1;
-            document.getElementById("recTitle2").innerText = translations[lang].recTitle2;
-            document.getElementById("recDesc2").innerText = translations[lang].recDesc2;
             document.getElementById("recTitle3").innerText = translations[lang].recTitle3;
             document.getElementById("recDesc3").innerText = translations[lang].recDesc3;
             
             document.getElementById("giftSectionTxt").innerText = translations[lang].giftTxt;
             document.getElementById("secTitleContact").innerText = translations[lang].titleContact;
 
-            // Overlay-ի սահուն անհետացումը (ուղղված տարբերակ)
+            // Overlay-ի սահուն անհետացումը
             const overlay = document.getElementById("languageOverlay");
             overlay.classList.add("hide");
 
