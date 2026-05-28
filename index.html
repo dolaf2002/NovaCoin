@@ -430,7 +430,7 @@
         }
         .submit-btn:hover { background-color: #b9975a; color: #1a1917; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(185,151,90,0.3); }
 
-        /* CONTACTS - ԹԱՐՄԱՑՎԱԾ ՖՈՆՈՎ ԲԱԺԻՆ */
+        /* CONTACTS */
         .contact-section { 
             background-image: linear-gradient(rgba(26, 25, 23, 0.86), rgba(26, 25, 23, 0.92)), url('https://i.postimg.cc/JzSxrVW6/IMG-2656.png');
             background-size: cover;
@@ -456,7 +456,7 @@
 <body>
 
     <audio id="weddingMusic" loop>
-        <source src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Erik_Satie_-_Gymnop%C3%A9die_No._1.mp3" type="audio/mpeg">
+        <source src="https://github.com/dolaf2002/Erg/raw/refs/heads/main/Gibran_Alcocer_-_Idea_10_(mp3.pm).mp3" type="audio/mpeg">
     </audio>
 
     <div class="language-overlay" id="languageOverlay">
@@ -516,7 +516,7 @@
                 <div class="letter-title" id="letterTitleTxt">Հարգելի՛ հյուրեր</div>
                 <p class="letter-paragraph" id="letterParagraphTxt">
                     Ուրախ ենք հրավիրել Ձեզ մեր ընտանեկան առաջին տոնակատարությանը՝ <strong>մեր հարսանիքին</strong>:<br><br>
-                    Մենք շատ ենք ցանկանում, որ այդ օրը մեր kողքին լինեն ամենամտերիմ մարդիկ։ <br>
+                    Մենք շատ ենք ցանկանում, որ այդ օրը մեր կողքին լինեն ամենամտերիմ մարդիկ։ <br>
                     Հանդիսությունը կկայանա հուլիսի 27-ին՝ Գյումրու «Վիկտորիա» ռեստորանային համալիրում։
                 </p>
             </div>
@@ -616,7 +616,7 @@
     <section class="rsvp-section reveal-scale">
         <div class="section-title reveal" id="secTitleRsvp" style="margin-bottom: 30px; display: block;">ՀԱՍՏԱՏՈՒՄ</div>
         
-        <form class="rsvp-form" action="https://formspree.io/f/xlgvzegg" method="POST">
+        <form class="rsvp-form" action="https://formspree.io/f/mqejnpdk" method="POST">
             <div class="form-group">
                 <label class="form-label" id="lblFormName">Անուն Ազգանուն</label>
                 <input type="text" name="Guest Name" id="inputGuestName" class="form-input" required placeholder="Անուն Ազգանուն">
@@ -634,11 +634,11 @@
                 <label class="form-label" id="lblFormAttendance">Կմասնակցե՞ք արդյոք</label>
                 <div class="radio-group">
                     <label class="radio-label">
-                        <input type="radio" name="Attendance" value="Yes, Attending" checked onclick="toggleGuestCount(true)">
+                        <input type="radio" name="Attendance" id="radioInputYes" value="Կմասնակցեմ" checked onclick="toggleGuestCount(true)">
                         <span id="radioYes">Կմասնակցեմ</span>
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="Attendance" value="No, Cannot Attend" onclick="toggleGuestCount(false)">
+                        <input type="radio" name="Attendance" id="radioInputNo" value="Չի կարող մասնակցել և ներողություն է խնդրում" onclick="toggleGuestCount(false)">
                         <span id="radioNo">Ցավոք չեմ կարող</span>
                     </label>
                 </div>
@@ -664,8 +664,8 @@
     <section class="contact-section">
         <h2 class="contact-title reveal" id="secTitleContact">Հետադարձ կապ</h2>
         <div class="contact-details reveal">
-            <p>+374 (99) 00-00-00</p>
-            <p><a href="mailto:info@wedding.am">info@wedding.am</a></p>
+            <p><span id="contactNameGroom">Արման</span>՝ <a href="tel:+37493202723">+374 93 202723</a></p>
+            <p><span id="contactNameBride">Սոֆիա</span>՝ <a href="tel:+79630937262">+7 963 0937262</a></p>
             <p>Design By Grigoryan'sCompany</p>
             <p class="designer-phone"><a href="tel:+37495996999">+374 95 996999</a></p>
         </div>
@@ -692,7 +692,9 @@
                 placeholderName: "Անուն Ազգանուն",
                 lblFormInvitedBy: "Ում կողմից եք հրավիրված", optGroom: "Փեսայի կողմից", optBride: "Հարսի կողմից",
                 radioYes: "Կմասնակցեմ", radioNo: "Ցավոք չեմ կարող", lblFormCount: "Հյուրերի քանակը (ներառյալ Ձեզ)", btnSubmit: "Ուղարկել պատասխանը",
-                titleContact: "Հետադարձ կապ", countdownFinished: "Հարսանեկան հանդիսությունը սկսվել է:"
+                titleContact: "Հետադարձ կապ", countdownFinished: "Հարսանեկան հանդիսությունը սկսվել է:",
+                contactGroomLabel: "Արման", contactBrideLabel: "Սոֆիա",
+                valYes: "Կմասնակցեմ", valNo: "Չի կարող մասնակցել և ներողություն է խնդրում"
             },
             ru: {
                 groomName: "Арман", brideName: "София", envelopeNames: "Арман и София",
@@ -713,7 +715,9 @@
                 placeholderName: "Имя Фамилия",
                 lblFormInvitedBy: "С чьей стороны вы приглашены?", optGroom: "Со стороны жениха", optBride: "Со стороны невесты",
                 radioYes: "Я приду", radioNo: "Не смогу прийти", lblFormCount: "Количество гостей (включая Вас)", btnSubmit: "Отправить ответ",
-                titleContact: "Контакты", countdownFinished: "Свадебное торжество началось!"
+                titleContact: "Контакты", countdownFinished: "Свадебное торжество началось!",
+                contactGroomLabel: "Арман", contactBrideLabel: "София",
+                valYes: "Примет участие", valNo: "Не сможет присутствовать и приносит свои извинения"
             }
         };
 
@@ -781,7 +785,15 @@
             document.getElementById("lblFormCount").innerText = translations[lang].lblFormCount;
             document.getElementById("btnSubmitForm").innerText = translations[lang].btnSubmit;
             
+            // Մեյլին ուղարկվող արժեքների (value) դինամիկ թարգմանություն
+            document.getElementById("radioInputYes").value = translations[lang].valYes;
+            document.getElementById("radioInputNo").value = translations[lang].valNo;
+            
             document.getElementById("secTitleContact").innerText = translations[lang].titleContact;
+            
+            // Հետադարձ կապի անունների դինամիկ թարգմանություն
+            document.getElementById("contactNameGroom").innerText = translations[lang].contactGroomLabel;
+            document.getElementById("contactNameBride").innerText = translations[lang].contactBrideLabel;
 
             const overlay = document.getElementById("languageOverlay");
             overlay.classList.add("hide");
